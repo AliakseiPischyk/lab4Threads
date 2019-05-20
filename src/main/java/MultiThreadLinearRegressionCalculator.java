@@ -55,7 +55,6 @@ public class MultiThreadLinearRegressionCalculator {
         return bestEquation;
     }
 
-
     private Float calculateRss(LinearEquation equation, List<Float> dependentData, List<Float> independentData) {
         if (dependentData.size()!= independentData.size()){
             throw new IllegalArgumentException("Data size not equal");
