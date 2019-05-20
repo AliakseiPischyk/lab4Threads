@@ -20,7 +20,7 @@ public class MultiThreadLinearRegressionCalculator {
                 stepSizeToStop,
                 learningRate);
 
-        for (var runnable : runnables) {
+        for (LinearRegressionCalculatorRunner runnable : runnables) {
             executor.execute(runnable);
         }
         executor.shutdown();
@@ -31,7 +31,7 @@ public class MultiThreadLinearRegressionCalculator {
         }
 
         List<LinearEquation> linearEquations = new ArrayList<>();
-        for (var runnable : runnables) {
+        for (LinearRegressionCalculatorRunner runnable : runnables) {
             linearEquations.add(runnable.getLinearEquation());
         }
 
@@ -45,7 +45,7 @@ public class MultiThreadLinearRegressionCalculator {
         LinearEquation bestEquation = null;
         float lastError;
         float minError = Float.MAX_VALUE;
-        for (var equation : linearEquations) {
+        for (LinearEquation equation : linearEquations) {
             lastError = calculateRss(equation, dependentData, independentData);
             if (lastError < minError) {
                 bestEquation = equation;
