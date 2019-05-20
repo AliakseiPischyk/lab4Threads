@@ -10,3 +10,4 @@ after_success:
 after_failure:
   - echo "Build was failed"
   mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
